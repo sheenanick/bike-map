@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/build/css/vendor.css">
+    <link rel="stylesheet" href="/build/css/styles.css">
+    <meta charset="utf-8">
+    <title>Bike Search</title>
+  </head>
+  <body>
+    <div class="container">
+      <form id="bike-location">
+        <div class="form-group">
+          <label for="location">What location would you like to search?</label>
+          <input type="text" id="location" class="form-control">
+        </div>
+        <button class="btn" type="submit">View bikes</button>
+      </form>
+      <div id="map"></div>
+      <div class="row title-display"></div>
+    </div>
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw4P0-JQiS-LuH_yS6_6kHS7FrmsIwHFc&libraries=visualization">
+    </script>
+  </body>
+</html>
