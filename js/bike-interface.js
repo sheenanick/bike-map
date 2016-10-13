@@ -3,13 +3,13 @@ var Map = require('./../js/map.js').mapModule;
 
 var displayTitle = function(location, bikeData, imgData, locations) {
   for (var i = 0; i < bikeData.length; i++) {
-    if (!(imgData[i] == null)) {
+    if (imgData[i]) {
       $('.title-display').append("<div class='col-md-3 bike" + clickCount + "'><h4>" + bikeData[i] + "</h4><img class='img-responsive' src='" + imgData[i] + "'></div>");
     } else {
       $('.title-display').append("<div class='col-md-3 bike" + clickCount + "'><h4>" + bikeData[i] + "</h4><img class='img-responsive' src='http://placehold.it/300x300'></div>");
     }
     var map = new Map();
-    map.getMap(locations[i], displayMarkers);
+    map.getInfo(locations[i], displayMarkers, bikeData[i]);
   }
   var heatmap = new google.maps.visualization.HeatmapLayer({
     data: heatmapData,
@@ -21,6 +21,7 @@ var displayTitle = function(location, bikeData, imgData, locations) {
 var currentBikeObject = new Bike();
 var map = new Map();
 var clickCount = 0;
+
 $('#bike-location').submit(function(event) {
   var clickId = ".bike" + clickCount;
   $(clickId).hide();
@@ -28,6 +29,7 @@ $('#bike-location').submit(function(event) {
   var location = $('#location').val();
   map.getMap(location, displayMap);
   currentBikeObject.getBike(location, displayTitle);
-  var location = $('#location').val("");
-  clickCount++
+  location = $('#location').val("");
+  clickCount++;
+
 });

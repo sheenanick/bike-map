@@ -20,6 +20,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
+var Yelp = require('yelp');
 
 var buildProduction = utilities.env.production;
 
@@ -42,7 +43,7 @@ gulp.task('bowerCSS', function(){
 
 gulp.task('bower', ['bowerJS', 'bowerCSS']);
 
-gulp.task('serve', function() {
+gulp.task('serve', ['build'], function() {
   browserSync.init( {
     server: {
       baseDir: "./",
@@ -60,7 +61,7 @@ gulp.task('jsBuild', ['jsBrowserify', 'jshint'], function(){
 });
 
 gulp.task('bowerBuild', ['bower'], function() {
-  bowerSync.reload();
+  browserSync.reload();
 });
 
 gulp.task('htmlBuild', function(){
