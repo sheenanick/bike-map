@@ -21,15 +21,18 @@ var displayTitle = function(location, bikeData, imgData, locations) {
 var currentBikeObject = new Bike();
 var map = new Map();
 var clickCount = 0;
-
+var location;
 $('#bike-location').submit(function(event) {
   var clickId = ".bike" + clickCount;
   $(clickId).hide();
   event.preventDefault();
-  var location = $('#location').val();
+  location = $('#location').val();
   map.getMap(location, displayMap);
   currentBikeObject.getBike(location, displayTitle);
-  location = $('#location').val("");
   clickCount++;
-
+});
+$('#stores').click(function() {
+  location = $('#location').val();
+  map.getMap(location, displayMap);
+  map.getMap(location, getPlaces);
 });

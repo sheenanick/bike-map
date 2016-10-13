@@ -11,7 +11,6 @@ var displayMap = function(lattitude, longitude) {
   mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
   var bikeLayer = new google.maps.BicyclingLayer();
   bikeLayer.setMap(mapObject);
-  getPlaces(lattitude, longitude);
 };
 
 var heatmapData = [];
@@ -44,14 +43,13 @@ function displayMarkers(lattitude, longitude, bikeData) {
 
 var getPlaces = function(latitude, longitude) {
   var coordinates = new google.maps.LatLng(latitude, longitude);
-
   var service = new google.maps.places.PlacesService(mapObject);
   service.nearbySearch({
     location: coordinates,
     radius: 5000,
-    type: ['store']
+    type: ['bicycle_store']
   }, callback);
-}
+};
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -67,7 +65,9 @@ function createMarker(place) {
   var placeLoc = place.geometry.location;
   var marker = new google.maps.Marker({
     map: mapObject,
-    position: place.geometry.location
+    position: place.geometry.location,
+    animation: google.maps.Animation.BOUNCE,
+    icon: "http://files.softicons.com/download/toolbar-icons/onebit-icons-4-by-icojam/png/48x48/004.png"
   });
 
   marker.addListener('click', function() {

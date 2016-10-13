@@ -7,15 +7,18 @@
     <title>Bike Search</title>
   </head>
   <body>
+    <div class="jumbotron">
+      <h1 class="text-center">Bike Map</h1>
+    </div>
     <div class="container">
       <form id="bike-location">
         <div class="form-group">
           <label for="location">What location would you like to search?</label>
           <input type="text" id="location" class="form-control">
         </div>
-        <button class="btn" type="submit">View bikes</button>
+        <button class="btn btn-warning" type="submit">View stolen bikes</button>
+        <button class="btn btn-info" id="stores" type="button" name="button">View stores</button>
       </form>
-      <div id="instafeed"></div>
       <div id="map"></div>
       <div class="row title-display"></div>
     </div>
